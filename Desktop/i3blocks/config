@@ -31,10 +31,8 @@ markup=pango
 
 [keyindicator]
 command=$SCRIPT_DIR/keyindicator.sh
-markup=pango
-interval=once
-signal=11
-separator=false
+interval=1
+color=#A01230
 
 [kbdd_layout]
 label= 
@@ -97,7 +95,6 @@ separator=false
 
 [openvpn]
 command=$SCRIPT_DIR/vpn.sh
-separator=false
 interval=10
 
 [network]

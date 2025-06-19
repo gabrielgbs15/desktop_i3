@@ -1,13 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 
-vpn=$((pgrep -a openvpn$ | head -n 1 | awk '{print $NF }' | cut -d '.' -f 1 && echo down) | head -n 1)
+# Símbolo do escudo (Nerd Font)
+icon=""
 
-if [ "$vpn" = "down" ]; then
-    echo ""
-    echo ""
-    echo \#2f2f2f
+# Cores (ajuste se quiser)
+color_on="#869dc6"    # Azul
+color_off="#2f2f2f"   # Preto
+
+status_line=$(sudo /usr/sbin/ufw status 2>/dev/null | head -n1 | tr -d '\r\n' | tr '[:upper:]' '[:lower:]')
+
+if echo "$status_line" | grep -q "ativo"; then
+    echo "$icon"
+    echo "$color_on"
 else
-    echo ""
-    echo ""
-    echo \#869dc6
+    echo "$icon"
+    echo "$color_off"
 fi
